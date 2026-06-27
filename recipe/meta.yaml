@@ -1,17 +1,18 @@
 {% set name = "asv_runner" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.5" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/asv_runner-{{ version }}.tar.gz
-  sha256: 945dd301a06fa9102f221b1e9ddd048f5ecd863796d4c8cd487f5577fe0db66d
+  # PyPI 0.2.5 ships wheel-only; GitHub tag has the sdist-equivalent tree for pdm-backend.
+  url: https://github.com/airspeed-velocity/asv_runner/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 5f0c0cf9206bb69ae43ef20d35bb61ddd822d3b5deac6f3c802f1fb3d02f4d90
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
