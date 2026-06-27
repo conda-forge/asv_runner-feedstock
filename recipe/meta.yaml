@@ -1,13 +1,13 @@
 {% set name = "asv_runner" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/asv_runner-{{ version }}.tar.gz
-  sha256: 945dd301a06fa9102f221b1e9ddd048f5ecd863796d4c8cd487f5577fe0db66d
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/asv_runner-{{ version }}.tar.gz
+  sha256: 66682f3c1865ecab1258788e02cd1fbdf629afcfe92f1d399823946e4dead8ac
 
 build:
   noarch: python
