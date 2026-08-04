@@ -13,7 +13,9 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 3
+  script_env:
+    - PDM_BUILD_SCM_VERSION={{ version }}
 
 requirements:
   host:
