@@ -12,8 +12,11 @@ source:
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  # GitHub archive tarballs carry no scm metadata; without an explicit
+  # version pdm-backend stamps whatever it can scrape (the 0.2.5/_2
+  # artifact shipped __version__ 0.1.dev24+gf49f9a3).
+  script: PDM_BUILD_SCM_VERSION={{ version }} {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 3
 
 requirements:
   host:
@@ -29,6 +32,8 @@ test:
     - asv_runner
   commands:
     - pip check
+    - python -c "import asv_runner; assert asv_runner.__version__ == '{{ version }}', asv_runner.__version__"
+    - python -c "from importlib.metadata import version; assert version('asv_runner') == '{{ version }}'"
   requires:
     - python {{ python_min }}
     - pip
