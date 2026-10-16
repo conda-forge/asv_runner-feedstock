@@ -1,5 +1,5 @@
 {% set name = "asv_runner" %}
-{% set version = "0.3.1" %}
+{% set version = "0.3.2" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +9,7 @@ source:
   # GitHub tag tree for pdm-backend / PDM_BUILD_SCM_VERSION. 0.3.1 also
   # publishes an sdist on PyPI; keep the tag URL so the bot can follow v*.
   url: https://github.com/airspeed-velocity/asv_runner/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: bcbb6456ab689192f606dbfaa20f04f0201e643a9f6c6d6fae033cf93b7068e4
+  sha256: c227e3c24adc41b67ee0d4fd6e7df2e28afdbbfeae189065bed14fc98ceaf8e3
 
 build:
   noarch: python
